@@ -1,0 +1,49 @@
+@use "../../assets/scss/" as *;
+.sort {
+    min-width: 220px;
+    cursor: pointer;
+    padding-top: 10px;
+    position: relative;
+
+    &:hover {
+        .sort__list {
+            display: flex;
+        }
+    }
+
+    @include mobile {
+        min-width: 110px;
+    }
+    &__title {
+        padding: 8px 16px;
+        border: 1px solid #ccc;
+
+        @include mobile {
+            padding: 4px 16px;
+        }
+        i {
+            margin-left: 6px;
+        }
+    }
+    &__list {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        border: 1px solid #ccc;
+        background-color: #fff;
+
+        position: absolute;
+        top: 70%;
+        left: 0;
+        right: 0;
+        z-index: 1;
+        display: none;
+    }
+    &__item {
+        width: 100%;
+        padding: 10px;
+        &:hover {
+            background-color: #ccc;
+        }
+    }
+}

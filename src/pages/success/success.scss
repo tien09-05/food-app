@@ -1,0 +1,31 @@
+@use "../../assets/scss/" as *;
+.success {
+    &__wrapper {
+        text-align: center;
+        color: #000;
+        padding: 200px 0;
+    }
+    &__icon {
+        font-size: 80px;
+        color: #49da82;
+    }
+    &__message {
+        font-size: 26px;
+        margin: 30px;
+    }
+    &__btn {
+        color: $primary-color;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600;
+
+        span {
+            margin-left: 12px;
+        }
+
+        &:hover {
+            filter: brightness(0.9);
+        }
+    }
+}

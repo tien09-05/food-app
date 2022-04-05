@@ -1,0 +1,24 @@
+@use "../../assets/scss/" as *;
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 80px;
+
+    @include mobile {
+        display: none;
+    }
+    &__item {
+        box-shadow: #cccccc 0px 0px 5px 1px;
+        padding: 8px 17px;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        &:hover,
+        &.active {
+            color: $white-color;
+            background-color: $primary-color;
+        }
+    }
+}

@@ -1,0 +1,130 @@
+@use "../../assets/scss/" as *;
+.header {
+    height: $header-height;
+    padding-top: 12px;
+
+    position: fixed;
+    z-index: 100;
+    width: 100%;
+    transition: all 0.3s ease;
+    &.bg-black {
+        background-color: rgba($color: #000000, $alpha: 0.8);
+        height: 78px;
+        padding-top: 8px;
+    }
+    &__nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        &__mobile {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            @include tablet {
+                display: block;
+            }
+        }
+    }
+
+    &__nav__left {
+        display: flex;
+        align-items: center;
+    }
+    &__nav__left__logo {
+        margin-right: 40px;
+
+        @include mobile {
+            margin-right: 0;
+            width: 100px;
+        }
+    }
+    &__nav__left__logo img {
+        width: 140px;
+    }
+    &__nav__left__list {
+        display: flex;
+        align-items: center;
+
+        @include tablet {
+            position: fixed;
+            left: 0;
+            top: 0;
+            bottom: 0;
+
+            width: 80%;
+            height: 100vh;
+
+            flex-direction: column;
+            align-items: flex-start;
+
+            background: #000;
+            z-index: 100;
+
+            padding-left: 20px;
+            padding-top: 20px;
+
+            display: none;
+            &::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                right: -50%;
+                width: 50%;
+                height: 100%;
+                background-color: rgba($color: #000000, $alpha: 0.6);
+                z-index: 90;
+            }
+
+            &.active {
+                display: block;
+            }
+        }
+    }
+    &__nav__left__list__item {
+        & ~ & {
+            margin-left: 24px;
+        }
+
+        i {
+            margin-right: 5px;
+        }
+
+        @include tablet {
+            & ~ & {
+                margin-left: 0;
+            }
+            & {
+                margin-top: 20px;
+            }
+        }
+
+        &:hover {
+            color: $primary-color;
+            transition: color 0.3s ease;
+        }
+    }
+    &__nav__right {
+        display: flex;
+        align-items: center;
+    }
+    &__nav__right__cart {
+        margin-right: 40px;
+        font-size: 26px;
+        position: relative;
+        cursor: pointer;
+        &__badge {
+            position: absolute;
+            bottom: -8px;
+            right: -8px;
+            padding: 5px;
+            background-color: orange;
+            border-radius: 50%;
+            font-size: 11px;
+        }
+
+        @include mobile {
+            margin-right: 0;
+        }
+    }
+}

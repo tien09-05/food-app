@@ -1,0 +1,142 @@
+@use "../../assets/scss/" as *;
+.cart {
+    position: fixed;
+    top: 0;
+    height: 100vh;
+    right: calc($cart-width * -1);
+    width: $cart-width;
+    background-color: #fff;
+    transition: all 0.3s linear;
+    z-index: 1000;
+
+    &.active {
+        right: 0;
+
+        .cart__overlay {
+            display: block;
+        }
+    }
+    &__overlay {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: -1;
+        display: none;
+        transition: all 0.3s linear;
+        width: calc(100% - $cart-width);
+    }
+    &__heading {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+        font-size: 22px;
+
+        i {
+            cursor: pointer;
+        }
+    }
+    &__title {
+    }
+    &__body {
+        border-top: 1px solid #ccc;
+        overflow-y: scroll;
+    }
+    &__food {
+        margin-top: 16px;
+        display: flex;
+        align-items: center;
+        color: #000;
+        padding: 0 16px;
+    }
+    &__food-img {
+        width: 75px;
+    }
+    &__food-info {
+        flex: 1 1;
+        padding: 0 16px;
+    }
+    &__food-name {
+        font-weight: bold;
+    }
+    &__food-price {
+        padding: 5px 0;
+        color: red;
+        font-weight: 500;
+    }
+    &__food-control {
+        display: flex;
+        align-items: center;
+    }
+    &__food-control-btn {
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 6px 12px;
+        background: aliceblue;
+    }
+    &__food-control-quantity {
+        margin: 0 10px;
+    }
+    &__food-trash {
+        i {
+            font-size: 26px;
+            cursor: pointer;
+        }
+    }
+    &__footer {
+        padding: 20px;
+        padding-top: 8px;
+        border-top: 1px solid rgba(0, 0, 0, 0.08);
+        box-shadow: 0 -5px 15px rgb(0 0 0 / 5%);
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+    &__total {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    &__total-text {
+        font-weight: 700;
+        font-size: 18px;
+    }
+    &__total-price {
+        font-size: 26px;
+        color: #ff1f1f;
+        font-weight: bold;
+    }
+    &__btns {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 30px 0;
+    }
+    &__btn {
+        width: calc(50% - 8px);
+        padding: 15px 0;
+        cursor: pointer;
+        border: none;
+        outline: none;
+        border-radius: 40px;
+        font-size: 14px;
+        font-weight: 600;
+        background: #fff;
+        box-shadow: 0 0 8px 1px #ccc;
+        text-align: center;
+        transform: all 0.3s ease;
+        &-checkout {
+            color: rgb(255, 255, 255);
+            background-color: rgb(255, 31, 31);
+        }
+        &:hover {
+            filter: brightness(0.8);
+            transform: all 0.3s ease;
+        }
+    }
+}

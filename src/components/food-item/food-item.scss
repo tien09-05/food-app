@@ -1,0 +1,126 @@
+@use "../../assets/scss/" as *;
+.food-item {
+    display: flex;
+    align-items: center;
+
+    flex-direction: column;
+
+    &:hover {
+        .food-item__btn {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+    &__img-wrapper {
+        position: relative;
+    }
+    &__img {
+        border-radius: 2px;
+    }
+    &__tag {
+        position: absolute;
+        top: 10px;
+        left: -4px;
+
+        padding: 4px 14px;
+        background-color: $primary-color;
+        font-size: 12px;
+        color: $white-color;
+        border-radius: 2px;
+        &::after {
+            content: "";
+            width: 0;
+            height: 0;
+            border-top: 6px solid $primary-color;
+            border-left: 6px solid transparent;
+
+            position: absolute;
+            top: 100%;
+            left: 0;
+        }
+    }
+    &__btns {
+        position: absolute;
+        top: 14px;
+        right: 14px;
+
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+    &__btn {
+        padding: 6px 10px;
+        border-radius: 100%;
+        background-color: rgba($color: #000000, $alpha: 0.5);
+        color: $white-color;
+        cursor: pointer;
+        transform: translateX(100%);
+        opacity: 0;
+        transition: all 0.3s ease;
+
+        &:hover {
+            color: $primary-color;
+        }
+
+        & ~ & {
+            margin-top: 10px;
+        }
+    }
+    &__star {
+        position: absolute;
+        left: 10px;
+        bottom: 10px;
+
+        color: $white-color;
+        font-size: 18px;
+        font-weight: 600;
+
+        display: flex;
+        align-items: center;
+
+        text-shadow: 2px 2px 8px rgb(0 0 0 / 45%);
+        i {
+            margin-right: 6px;
+        }
+        span {
+            font-size: 30px;
+        }
+    }
+    &__body {
+        width: 100%;
+        margin-top: 16px;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        justify-content: space-between;
+    }
+    &__name {
+        margin-bottom: 8px;
+        font-weight: 700;
+        transition: color 0.3s ease;
+        &:hover {
+            color: $primary-color;
+        }
+    }
+    &__desc {
+        font-size: 12px;
+    }
+    &__info {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+
+        font-size: 13px;
+    }
+    &__info__location {
+        i {
+            color: $primary-color;
+            margin-right: 6px;
+        }
+    }
+    &__info__price {
+        color: $primary-color;
+        font-size: 18px;
+        font-weight: 600;
+    }
+}

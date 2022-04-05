@@ -1,0 +1,36 @@
+.filter {
+    &__title {
+        padding: 8px 0;
+        font-size: 22px;
+        font-weight: 600;
+        width: 100%;
+        border-bottom: 1px solid #000;
+        margin-bottom: 16px;
+    }
+    &__type__item {
+        font-size: 18px;
+        padding: 10px 12px;
+        cursor: pointer;
+        &:hover {
+            background-color: #ccc;
+        }
+
+        i {
+            margin-right: 6px;
+        }
+
+        a {
+            display: block;
+        }
+    }
+    &__price-radio {
+        display: block;
+        font-size: 18px;
+        padding: 10px 12px;
+        cursor: pointer;
+
+        input {
+            margin-right: 5px;
+        }
+    }
+}

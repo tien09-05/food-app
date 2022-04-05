@@ -1,0 +1,108 @@
+@use "./assets/scss/" as *;
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+* {
+    margin: 0;
+}
+
+html,
+body {
+    height: 100%;
+}
+body {
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+    font-family: "Roboto", sans-serif;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+    display: block;
+    max-width: 100%;
+}
+input,
+button,
+textarea,
+select {
+    font: inherit;
+    outline: none;
+    border: none;
+}
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    overflow-wrap: break-word;
+}
+ul,
+li {
+    padding: 0;
+    list-style: none;
+}
+a {
+    color: unset;
+    text-decoration: none;
+}
+.container {
+    max-width: $container-width;
+    margin: 0 auto;
+    padding-left: 30px !important;
+    padding-right: 30px !important;
+    @include tablet {
+        padding-left: 40px !important;
+        padding-right: 40px !important;
+    }
+    @include mobile {
+        padding-left: 26px !important;
+        padding-right: 26px !important;
+    }
+}
+
+.hide-on-pc {
+    display: none;
+
+    @include tablet {
+        display: block;
+    }
+}
+.hide-on-tablet {
+    @include tablet {
+        display: none;
+    }
+}
+
+// section shop
+
+.shop {
+    display: flex;
+    gap: 30px;
+    padding: 0 20px;
+}
+
+.shop__filter {
+    width: 25%;
+
+    @include tablet {
+        display: none;
+    }
+}
+.shop__content {
+    width: 75%;
+    @include tablet {
+        width: 100%;
+    }
+}
