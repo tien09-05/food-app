@@ -28,6 +28,7 @@ const LoginPage = () => {
         const name = result.user.displayName;
         setIsLogin(true);
         setUserInfo({ name });
+        toast.success("Login success!!!");
         navigate("/");
       })
       .catch((error) => {
