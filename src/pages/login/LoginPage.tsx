@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import ReactFacebookLogin from "react-facebook-login";
 import "./login-page.scss";
 import { AuthContext } from "../../context/AuthContext";
 
@@ -12,6 +11,7 @@ import {
   GoogleAuthProvider,
   FacebookAuthProvider,
 } from "firebase/auth";
+
 import app from "../../firebase";
 app();
 const LoginPage = () => {
