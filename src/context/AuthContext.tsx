@@ -4,8 +4,9 @@ interface IProps {
   children: ReactNode;
 }
 interface IUser {
-  name: string;
+  name: string | null;
 }
+
 interface AuthContextDefault {
   isLogin: boolean;
   setIsLogin: React.Dispatch<React.SetStateAction<boolean>>;

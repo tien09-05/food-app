@@ -3,32 +3,38 @@ import ReactFacebookLogin from "react-facebook-login";
 import "./login-page.scss";
 import { AuthContext } from "../../context/AuthContext";
 
-import { GoogleLogin } from "react-google-login";
 import { useNavigate } from "react-router-dom";
 
 import { toast } from "react-toastify";
+import {
+  getAuth,
+  signInWithPopup,
+  GoogleAuthProvider,
+  FacebookAuthProvider,
+} from "firebase/auth";
+import app from "../../firebase";
+app();
 const LoginPage = () => {
   const { setIsLogin, setUserInfo } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  const responseGoogle = (res: any) => {
-    setIsLogin(true);
-    setUserInfo({
-      name: res.profileObj.name,
-    });
-    toast.success("Login success!!!");
-    navigate("/");
+  const auth = getAuth();
+  const googleProvider = new GoogleAuthProvider();
+  const facebookProvider = new FacebookAuthProvider();
+
+  const onHandleLogin = (provider: any) => {
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        const name = result.user.displayName;
+        setIsLogin(true);
+        setUserInfo({ name });
+        navigate("/");
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
   };
-  const responseFaceBook = (res: any) => {
-    setIsLogin(true);
-    setUserInfo({
-      name: res.name,
-    });
-    navigate("/");
-  };
-  const componentClicked = (res: object) => {
-    console.log(res);
-  };
+
   return (
     <div className="login-page container">
       <div className="login-page__wrapper">
@@ -63,24 +69,18 @@ const LoginPage = () => {
             <span>OR</span>
           </div>
           <div className="login-page__options">
-            <button className="login-page__option">
-              <ReactFacebookLogin
-                appId="915944908999650"
-                autoLoad={true}
-                fields="name,email,picture"
-                onClick={componentClicked}
-                callback={responseFaceBook}
-              />
+            <button
+              className="login-page__option"
+              onClick={() => onHandleLogin(facebookProvider)}
+            >
+              Facebook login
             </button>
 
-            <button className="login-page__option">
-              <GoogleLogin
-                clientId="106530942218-9lhntp18c9a56o5j3h7hd8dsd2qa47f7.apps.googleusercontent.com"
-                buttonText="Login with Google"
-                onSuccess={responseGoogle}
-                onFailure={responseGoogle}
-                cookiePolicy={"single_host_origin"}
-              />
+            <button
+              className="login-page__option"
+              onClick={() => onHandleLogin(googleProvider)}
+            >
+              Google login
             </button>
           </div>
         </div>
